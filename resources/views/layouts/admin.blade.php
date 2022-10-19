@@ -49,10 +49,6 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.home') }}">{{ __('Admin section') }}</a>
-                            </li>
-
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -77,7 +73,7 @@
         </nav>
 
         <main class="py-4">
-            <h1>Guest layout</h1>
+            <h1>Admin layout</h1>
             @yield('content')
         </main>
     </div>
