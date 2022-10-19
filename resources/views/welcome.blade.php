@@ -13,7 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    
+                    {{-- <h3>Guest layout</h3> --}}
                     {{ __('You are in guest section!') }}
                 </div>
             </div>

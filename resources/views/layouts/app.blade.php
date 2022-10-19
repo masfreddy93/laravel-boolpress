@@ -77,7 +77,6 @@
         </nav>
 
         <main class="py-4">
-            <h1>Guest layout</h1>
             @yield('content')
         </main>
     </div>

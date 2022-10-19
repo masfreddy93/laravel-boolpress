@@ -15,7 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -25,7 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('admin.posts.create');
     }
 
     /**
@@ -36,7 +39,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $params = $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'slug' => 'required',
+        ]);
+
+        $p = Post::create($params);
+
+        return redirect()->route('admin.posts.show', $p);
+
     }
 
     /**
@@ -45,9 +58,11 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($post)
     {
-        //
+        $p = Post::findOrFail($post);
+
+        return view('admin.posts.show', compact('p'));
     }
 
     /**
@@ -56,9 +71,11 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($post)
     {
-        //
+        $p = Post::findOrFail($post);
+
+        return view('admin.posts.edit', compact('p'));
     }
 
     /**
@@ -68,9 +85,19 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
-    {
-        //
+    public function update(Request $request, $post)
+    {   
+        $p = Post::findOrFail($post);
+
+        $params = $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'slug' => 'required',
+        ]);
+
+        $p->update($params);
+
+        return redirect()->route('admin.posts.show', $p);
     }
 
     /**
@@ -79,8 +106,12 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($post)
     {
-        //
+        $p = Post::findOrFail($post);
+
+        $p->delete();
+
+        return redirect()->route('admin.posts.index');
     }
 }

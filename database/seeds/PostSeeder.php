@@ -16,7 +16,7 @@ class PostSeeder extends Seeder
         for($i=0; $i<50; $i++){
             $p = new Post();
             $p->title = $faker->words( rand(4, 8), true );
-            $p->content = $faker->text( rand(15, 50) );
+            $p->content = $faker->text( rand(15, 50), true );
             $p->slug = str_replace(' ', '-', $p->title);
 
             $p->save();
