@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -43,7 +44,7 @@ class PostController extends Controller
         $params = $request->validate([
             'title' => 'required',
             'content' => 'required',
-            'slug' => 'required',
+            'slug' => 'required|unique:posts',
         ]);
 
         $p = Post::create($params);
@@ -92,7 +93,12 @@ class PostController extends Controller
         $params = $request->validate([
             'title' => 'required',
             'content' => 'required',
-            'slug' => 'required',
+            // 'slug' => 'required|unique:posts',
+
+            'slug' => [
+                'required',
+                Rule::unique('posts')->ignore($post),
+            ],
         ]);
 
         $p->update($params);
