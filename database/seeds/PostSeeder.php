@@ -25,9 +25,7 @@ class PostSeeder extends Seeder
             $p->title = $faker->words( rand(4, 8), true );
             $p->content = $faker->text( rand(15, 50), true );
             $p->slug = Str::slug($p->title, '-');
-            // $p->slug = str_replace(' ', '-', $p->title);
             $p->category_id = $faker->optional()->randomElement($categoryIds);
-            // $p->category_id = 2;
 
             $p->save();
         }

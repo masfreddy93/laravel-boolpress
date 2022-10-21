@@ -11,6 +11,9 @@
 
         <h4>Slug</h4>
         <p class="font-italic">{{ $p->slug }}</p>
+
+        <h4>Category</h4>
+        <p class="font-italic">{{ $p->category ? $p->category->name : 'No category' }}</p>
     </div>
     <div class="container mt-4">
         <a href="{{ route('admin.posts.edit', $p) }}">Edit</a>
