@@ -121,3 +121,5 @@ class PostController extends Controller
         return redirect()->route('admin.posts.index');
     }
 }
+
+
