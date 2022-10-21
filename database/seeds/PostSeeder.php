@@ -17,6 +17,8 @@ class PostSeeder extends Seeder
     {
 
         $categoryIds = Category::all()->pluck('id');
+        // print_r($categoryIds);
+        // exit;
 
         for($i=0; $i<50; $i++){
             $p = new Post();
