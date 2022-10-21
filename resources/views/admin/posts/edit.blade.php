@@ -17,7 +17,7 @@
 
             <p>
                 {{-- <label for="content">Content</label> --}}
-                <input type="textarea" id="content" name="content" placeholder="Content" value="{{ $p->content }}">
+                <textarea name="content" id="content" cols="30" rows="10" value="{{ $p->content }}"></textarea>
                 @error('content')
                     <div style="color:red; font-size:12px"> {{ $message }} </div>
                 @enderror
@@ -30,6 +30,16 @@
                     <div style="color:red; font-size:12px"> {{ $message }} </div>
                 @enderror
             </p>
+
+            <select name="category_id" id="category_id" value="{{ $p->category_id }}">
+                <option selected value="null">No Category</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+            @error('recovery_id')
+                <div style="color:red; font-size:12px"> {{ $message }} </div>
+            @enderror
 
             <input type="submit" value="Invia">
         </form>

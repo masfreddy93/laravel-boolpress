@@ -16,7 +16,7 @@
 
             <p>
                 {{-- <label for="content">Content</label> --}}
-                <input type="textarea" id="content" name="content" placeholder="Content" value="{{ old('content') }}">
+                <textarea name="content" id="content" cols="30" rows="10" value="{{ old('content') }}"></textarea>
                 @error('content')
                     <div style="color:red; font-size:12px"> {{ $message }} </div>
                 @enderror
@@ -26,6 +26,19 @@
                 {{-- <label for="slug">Slug</label> --}}
                 <input type="text" id="slug" name="slug" placeholder="Slug" value="{{ old('slug') }}">
                 @error('slug')
+                    <div style="color:red; font-size:12px"> {{ $message }} </div>
+                @enderror
+            </p>
+
+            <p>
+                {{-- <label for="slug">Slug</label> --}}
+                <select name="category_id" id="category_id" >
+                    <option selected value="null">No Category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                @error('recovery_id')
                     <div style="color:red; font-size:12px"> {{ $message }} </div>
                 @enderror
             </p>
