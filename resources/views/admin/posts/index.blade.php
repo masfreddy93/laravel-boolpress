@@ -3,7 +3,7 @@
 @section('content')
     <h2 class="text-center mb-2">List of posts</h2>
     <div class="container-fluid mb-3 text-left">
-        <a href="{{ route('admin.posts.create') }}">Create Post</a>
+        <a class=" mb-3" href="{{ route('admin.posts.create') }}">Create Post</a>
     </div>
     <div class="container-fluid">
         <table class="table">

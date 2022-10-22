@@ -33,7 +33,7 @@
             <p>
                 {{-- <label for="slug">Slug</label> --}}
                 <select name="category_id" id="category_id" >
-                    <option selected value="null">No Category</option>
+                    <option selected value="">No Category</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
