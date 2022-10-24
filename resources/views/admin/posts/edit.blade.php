@@ -17,7 +17,7 @@
 
             <p>
                 {{-- <label for="content">Content</label> --}}
-                <textarea name="content" id="content" cols="30" rows="10" value="{{ $p->content }}"></textarea>
+                <textarea name="content" id="content" cols="30" rows="10">{{ $p->content }}</textarea>
                 @error('content')
                     <div style="color:red; font-size:12px"> {{ $message }} </div>
                 @enderror
@@ -32,12 +32,12 @@
             </p>
 
             <select name="category_id" id="category_id" value="{{ $p->category_id }}">
-                <option selected value="null">No Category</option>
+                <option selected value="">No Category</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
-            @error('recovery_id')
+            @error('category_id')
                 <div style="color:red; font-size:12px"> {{ $message }} </div>
             @enderror
 

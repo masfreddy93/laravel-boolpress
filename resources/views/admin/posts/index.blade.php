@@ -3,7 +3,7 @@
 @section('content')
     <h2 class="text-center mb-2">List of posts</h2>
     <div class="container-fluid mb-3 text-left">
-        <a class=" mb-3" href="{{ route('admin.posts.create') }}">Create Post</a>
+        <a class="mb-3" href="{{ route('admin.posts.create') }}">Create Post</a>
     </div>
     <div class="container-fluid">
         <table class="table">
@@ -13,6 +13,7 @@
                     <th scope="col">Content</th>
                     <th scope="col">Category_id</th>
                     <th scope="col">Slug</th>
+                    <th>Created At</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
@@ -25,6 +26,7 @@
                         <td>{{ $p->content }}</td>
                         <td>{{ $p->category ? $p->category->name : 'No Category' }}</td>
                         <td>{{ $p->slug }}</td>
+                        <td>{{ $p->created_at }}</td>
                         <td><a href="{{ route('admin.posts.show', $p) }}">Show</a></td>
                         <td><a href="{{ route('admin.posts.edit', $p) }}">Edit</a></td>
                         <td>

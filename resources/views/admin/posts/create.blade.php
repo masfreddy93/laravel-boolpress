@@ -16,7 +16,7 @@
 
             <p>
                 {{-- <label for="content">Content</label> --}}
-                <textarea name="content" id="content" cols="30" rows="10" value="{{ old('content') }}"></textarea>
+                <textarea name="content" id="content" cols="30" rows="10">{{ old('content') }}</textarea>
                 @error('content')
                     <div style="color:red; font-size:12px"> {{ $message }} </div>
                 @enderror
@@ -38,7 +38,7 @@
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
-                @error('recovery_id')
+                @error('category_id')
                     <div style="color:red; font-size:12px"> {{ $message }} </div>
                 @enderror
             </p>

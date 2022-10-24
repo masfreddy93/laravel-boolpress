@@ -17,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'desc')->get();
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -90,9 +90,9 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $post)
+    public function update(Request $request, Post $post)
     {   
-        $p = Post::findOrFail($post);
+        // $p = Post::findOrFail($post);
 
         $params = $request->validate([
             'title' => 'required',
@@ -105,9 +105,9 @@ class PostController extends Controller
             'category_id' => 'nullable|exists:categories,id'
         ]);
 
-        $p->update($params);
+        $post->update($params);
 
-        return redirect()->route('admin.posts.show', $p);
+        return redirect()->route('admin.posts.show', $post);
     }
 
     /**
