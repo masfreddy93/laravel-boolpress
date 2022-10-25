@@ -26,7 +26,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <a class="navbar-brand border-left pl-3 border-dark" href="{{route('admin.posts.index')}}">
+                <a class="navbar-brand bg-primary pr-3 text-white border-left pl-3 border-dark" href="{{route('admin.posts.index')}}">
                     Posts
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

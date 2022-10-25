@@ -17,7 +17,7 @@
 
             <p>
                 {{-- <label for="content">Content</label> --}}
-                <textarea name="content" id="content" cols="30" rows="10" value="{{ $p->content }}"></textarea>
+                <textarea name="content" id="content" cols="30" rows="10">{{ $p->content }}</textarea>
                 @error('content')
                     <div style="color:red; font-size:12px"> {{ $message }} </div>
                 @enderror
@@ -32,7 +32,7 @@
             </p>
 
             <select name="category_id" id="category_id" value="{{ $p->category_id }}">
-                <option selected value="null">No Category</option>
+                <option selected value="">No Category</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
@@ -40,6 +40,19 @@
             @error('recovery_id')
                 <div style="color:red; font-size:12px"> {{ $message }} </div>
             @enderror
+
+            <p>
+                @foreach ($tags as $tag)
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="tags[]" type="checkbox" @if(in_array($tag->id, old(('tags'), $p->tags->pluck('id')->all()))) checked @endif id="tag-{{ $tag->id }}" value="{{ $tag->id }}">
+                        <label class="form-check-label" for="tag-{{ $tag->id }}"> {{ $tag->name }} </label>
+                    </div>
+                @endforeach
+            {{-- @error('tags.*')
+                    <div style="color:red; font-size:12px"> {{ $message }} </div>
+            @enderror --}}
+            </p>
+
 
             <input type="submit" value="Invia">
         </form>
