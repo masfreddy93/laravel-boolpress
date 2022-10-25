@@ -8,12 +8,22 @@
 
         <h4>Content</h4>
         <p class="font-italic">{{ $p->content }}</p>
+        
+        <h4>Category</h4>
+        <p class="font-italic">{{ $p->category ? $p->category->name : 'No category' }}</p>
+
+        <h4>Tags</h4>
+        <p class="font-italic">
+            <ul class="list-unstyled">
+                @foreach ($p->tags as $tag)
+                    <li class="font-italic">{{ $tag->name }}</li>
+                @endforeach
+            </ul>
+        </p>
 
         <h4>Slug</h4>
         <p class="font-italic">{{ $p->slug }}</p>
 
-        <h4>Category</h4>
-        <p class="font-italic">{{ $p->category ? $p->category->name : 'No category' }}</p>
     </div>
     <div class="container mt-4">
         <a href="{{ route('admin.posts.edit', $p) }}">Edit</a>
