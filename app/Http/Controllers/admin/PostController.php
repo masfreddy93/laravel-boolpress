@@ -18,11 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        $posts = Post::orderBy('created_at', 'desc')->get();
-=======
         $posts = Post::orderBy('created_at', 'desc',)->orderBy('updated_at', 'desc')->get();
->>>>>>> develop
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -123,17 +119,13 @@ class PostController extends Controller
 
         $post->update($params);
 
-<<<<<<< HEAD
-        return redirect()->route('admin.posts.show', $post);
-=======
         if(array_key_exists('tags', $params)){
-            $p->tags()->sync($params['tags']);
+            $post->tags()->sync($params['tags']);
         }else{
-            $p->tags()->detach();
+            $post->tags()->detach();
         }
 
-        return redirect()->route('admin.posts.show', $p);
->>>>>>> develop
+        return redirect()->route('admin.posts.show', $post);
     }
 
     /**

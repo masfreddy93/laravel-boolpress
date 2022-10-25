@@ -3,11 +3,7 @@
 @section('content')
     <h2 class="text-center mb-2">List of posts</h2>
     <div class="container-fluid mb-3 text-left">
-<<<<<<< HEAD
-        <a class="mb-3" href="{{ route('admin.posts.create') }}">Create Post</a>
-=======
         <a href="{{ route('admin.posts.create') }}">Create Post (+)</a>
->>>>>>> develop
     </div>
     <div class="container-fluid">
         <table class="table">
@@ -18,12 +14,8 @@
                     <th scope="col">Category</th>
                     <th scope="col">Tag</th>
                     <th scope="col">Slug</th>
-<<<<<<< HEAD
-                    <th>Created At</th>
-=======
                     <th scope="col">Created at</th>
                     <th scope="col">Updated at</th>
->>>>>>> develop
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
@@ -48,10 +40,7 @@
                         </td>
                         <td>{{ $p->slug }}</td>
                         <td>{{ $p->created_at }}</td>
-<<<<<<< HEAD
-=======
                         <td>{{ $p->updated_at }}</td>
->>>>>>> develop
                         <td><a href="{{ route('admin.posts.show', $p) }}">Show</a></td>
                         <td><a href="{{ route('admin.posts.edit', $p) }}">Edit</a></td>
                         <td>
