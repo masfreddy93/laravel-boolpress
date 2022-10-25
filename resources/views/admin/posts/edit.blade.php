@@ -41,6 +41,19 @@
                 <div style="color:red; font-size:12px"> {{ $message }} </div>
             @enderror
 
+            <p>
+                @foreach ($tags as $tag)
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" name="tags[]" type="checkbox" @if(in_array($tag->id, old(('tags'), $p->tags->pluck('id')->all()))) checked @endif id="tag-{{ $tag->id }}" value="{{ $tag->id }}">
+                        <label class="form-check-label" for="tag-{{ $tag->id }}"> {{ $tag->name }} </label>
+                    </div>
+                @endforeach
+            {{-- @error('tags.*')
+                    <div style="color:red; font-size:12px"> {{ $message }} </div>
+            @enderror --}}
+            </p>
+
+
             <input type="submit" value="Invia">
         </form>
     </div>

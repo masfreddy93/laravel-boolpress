@@ -30,5 +30,7 @@ Route::middleware('auth')
 
     Route::resource('posts', 'PostController');
 
+    Route::resource('tags', 'TagController')->only(['show']);
+
 });
 
