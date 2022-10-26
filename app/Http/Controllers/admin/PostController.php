@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class PostController extends Controller
@@ -46,13 +47,23 @@ class PostController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        // dd($request->file('image'));
+
+        // dd($img_path);
+
         $params = $request->validate([
             'title' => 'required',
             'content' => 'required',
             'slug' => 'required|unique:posts',
             'category_id' => 'nullable|exists:categories,id',
-            'tags' => 'exists:tags,id'
+            'tags' => 'exists:tags,id',
+            'image' => 'nullable|image|max:10000'
         ]);
+
+        if(array_key_exists('image', $params)){
+            $img_path = Storage::put('uploads', $params['image']);
+            $params['cover'] = $img_path;
+        }
 
         $p = Post::create($params);
 
@@ -105,6 +116,11 @@ class PostController extends Controller
     {   
         // $p = Post::findOrFail($post);
 
+        if($post->cover){
+
+            Storage::delete($post->cover);
+        }
+
         $params = $request->validate([
             'title' => 'required',
             'content' => 'required',
@@ -114,17 +130,25 @@ class PostController extends Controller
                 Rule::unique('posts')->ignore($post),
             ],
             'category_id' => 'nullable|exists:categories,id',
-            'tags' => 'exists:tags,id'
+            'tags' => 'exists:tags,id',
+            'image' => 'nullable|image|max:10000',
         ]);
 
+        // dd($request->file('image'));
+        if(array_key_exists('image', $params)){
+            $img_path = Storage::put('uploads', $params['image']);
+            $params['cover'] = $img_path;
+        }
+        
         $post->update($params);
-
+        
         if(array_key_exists('tags', $params)){
             $post->tags()->sync($params['tags']);
         }else{
             $post->tags()->detach();
         }
 
+        
         return redirect()->route('admin.posts.show', $post);
     }
 
@@ -138,7 +162,16 @@ class PostController extends Controller
     {
         $p = Post::findOrFail($post);
 
+        $post_cover = $p->cover;
+
         $p->delete();
+
+        if($post_cover && Storage::exists($post_cover)){
+            Storage::delete($post_cover);
+        }
+        
+
+        Storage::delete($post_cover);
 
         return redirect()->route('admin.posts.index');
     }
