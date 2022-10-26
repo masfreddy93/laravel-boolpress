@@ -3,9 +3,17 @@
 @section('content')
     <div class="container">
         <h2 class="mb-4">Edit Post</h2>
-        <form action="{{route('admin.posts.update', $p)}}" method="POST">
+        <form action="{{route('admin.posts.update', $p)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+
+            <p>
+                <input type="file" id="image" name="image" id="image" class="@error('image') is-invalid @endif">
+                {{-- <label for="image">Choose Image</label> --}}
+                @error('image')
+                    <div style="color:red; font-size:12px"> {{ $message }} </div>
+                @enderror
+            </p>
 
             <p>
                 {{-- <label for="title">Title</label> --}}

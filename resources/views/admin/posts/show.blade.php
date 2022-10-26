@@ -3,6 +3,14 @@
 @section('content')
     <div class="container p-2">
         <h2 class="mb-5">Post</h2>
+
+        @if ($p->cover)
+            <h4>Cover</h4>
+            <img src="{{ asset("storage/".$p->cover) }}" alt="cover">
+        @else
+            No cover
+        @endif
+
         <h4>Title</h4>
         <p class="font-italic">{{ $p->title }}</p>
 
