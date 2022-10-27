@@ -4,9 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Mail\sendPostCreatedMail;
 use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
@@ -73,8 +75,10 @@ class PostController extends Controller
             $p->tags()->sync($tags);
         }
 
+        Mail::to('bellona@gmail.com')->send(new sendPostCreatedMail($p));
+        
         return redirect()->route('admin.posts.show', $p);
-
+        
     }
 
     /**
@@ -116,8 +120,7 @@ class PostController extends Controller
     {   
         // $p = Post::findOrFail($post);
 
-        if($post->cover){
-
+        if($post->cover){            
             Storage::delete($post->cover);
         }
 
