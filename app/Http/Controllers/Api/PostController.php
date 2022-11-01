@@ -15,12 +15,15 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::limit(20)->orderBy('created_at', 'desc')->with('category', 'tags')->get();
+        $result = Post::orderBy('created_at', 'desc')->with('category', 'tags')->paginate(10);
+        $success = true;
 
         // return response()->json(compact('posts'));
-        return response()->json([
-            'posts' => $posts
-        ]);
+        // return response()->json([
+        //     'posts' => $posts
+        // ]);
+
+        return response()->json(compact('result', 'success'));
 
     }
 
