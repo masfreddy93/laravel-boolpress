@@ -1943,10 +1943,24 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     fetchPosts: function fetchPosts() {
       var _this = this;
-      axios.get('/api/posts').then(function (res) {
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('/api/posts', {
+        params: {
+          page: page
+        }
+      }).then(function (res) {
         console.log(res.data);
-        var posts = res.data.posts;
-        _this.posts = posts;
+        // const { posts } = res.data;
+        // this.posts = posts;
+        var _res$data$result = res.data.result,
+          data = _res$data$result.data,
+          current_page = _res$data$result.current_page,
+          last_page = _res$data$result.last_page,
+          total = _res$data$result.total;
+        _this.posts = data;
+        _this.currentPage = current_page;
+        _this.lastPage = last_page;
+        _this.total = total;
       });
     }
   },
@@ -1992,7 +2006,7 @@ var render = function render() {
       key: tag.id,
       staticClass: "hover:opacity-50 cursor-pointer bg-slate-500 rounded-xl px-2 py-1 text-white"
     }, [_vm._v(_vm._s(tag.name))]);
-  }), 0), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.post.created_at))])]);
+  }), 0), _vm._v(" "), _c("span", [_vm._v(_vm._s(_vm.post.date))])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -2019,7 +2033,7 @@ var render = function render() {
   }, [_c("h1", {
     staticClass: "h1 mb-5"
   }, [_vm._v(_vm._s(_vm.title))]), _vm._v(" "), _c("ul", {
-    staticClass: "grid grid-cols-4 gap-4"
+    staticClass: "grid grid-cols-4 gap-4 mb-5"
   }, _vm._l(_vm.posts, function (post) {
     return _c("PostCard", {
       key: post.id,
@@ -2027,7 +2041,46 @@ var render = function render() {
         post: post
       }
     });
-  }), 1)]);
+  }), 1), _vm._v(" "), _c("ul", {
+    staticClass: "flex justify-center gap-2"
+  }, [_vm.currentPage !== 1 ? _c("li", {
+    staticClass: "flex w-8 h-8 justify-center items-center",
+    "class": {
+      "bg-gray-100 hover:bg-amber-300": true,
+      "rounded-full cursor-pointer": true
+    },
+    on: {
+      click: function click($event) {
+        return _vm.fetchPosts(1);
+      }
+    }
+  }, [_vm._v("...")]) : _vm._e(), _vm._v(" "), _vm._l(_vm.lastPage, function (page) {
+    return _c("li", {
+      key: page,
+      staticClass: "flex w-8 h-8 justify-center items-center",
+      "class": {
+        "bg-amber-400": page === _vm.currentPage,
+        "bg-gray-100 hover:bg-amber-300": page !== _vm.currentPage,
+        "rounded-full cursor-pointer": true
+      },
+      on: {
+        click: function click($event) {
+          return _vm.fetchPosts(page);
+        }
+      }
+    }, [_vm._v(_vm._s(page))]);
+  }), _vm._v(" "), _vm.currentPage !== _vm.lastPage ? _c("li", {
+    staticClass: "flex w-8 h-8 justify-center items-center",
+    "class": {
+      "bg-gray-100 hover:bg-amber-300": true,
+      "rounded-full cursor-pointer": true
+    },
+    on: {
+      click: function click($event) {
+        return _vm.fetchPosts(_vm.lastPage);
+      }
+    }
+  }, [_vm._v("...")]) : _vm._e()], 2)]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
