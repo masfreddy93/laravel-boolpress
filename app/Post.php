@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {
@@ -21,4 +22,14 @@ class Post extends Model
     public function tags(){
         return $this->belongsToMany('App\Tag');
     }
+
+    public function getDateAttribute(){
+        return $this->created_at->format('d-m-Y');
+    }
+
+    // public function getCoverPathAttribute(){
+    //     return $this->cover ? Storage::disk('uploads')->url($this->cover) : null;
+    // }
+
+    protected $appends = ['date'];
 }
