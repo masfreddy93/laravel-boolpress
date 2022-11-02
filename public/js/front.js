@@ -2073,11 +2073,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Header.vue */ "./resources/js/components/Header.vue");
-// import PostCard from '../components/PostCard.vue';
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    // PostCard,
     Header: _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
@@ -2085,28 +2083,7 @@ __webpack_require__.r(__webpack_exports__);
       title: 'Post Cards'
       // posts: [],
     };
-  } // methods: {
-  //     fetchPosts(page = 1) {
-  //         axios.get('/api/posts', {
-  //             params: {
-  //                 page: page
-  //             }
-  //         })
-  //             .then((res) => {
-  //                 console.log(res.data);
-  //                 // const { posts } = res.data;
-  //                 // this.posts = posts;
-  //                 const { data, current_page, last_page, total } = res.data.result;
-  //                 this.posts = data;
-  //                 this.currentPage = current_page;
-  //                 this.lastPage = last_page;
-  //                 this.total = total;
-  //             });
-  //     }
-  // },
-  // beforeMount() {
-  //     this.fetchPosts();
-  // }
+  }
 });
 
 /***/ }),
@@ -18115,52 +18092,19 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _views_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/App */ "./resources/js/views/App.vue");
-/* harmony import */ var _pages_Home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/Home */ "./resources/js/pages/Home.vue");
-/* harmony import */ var _pages_AboutUs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/AboutUs */ "./resources/js/pages/AboutUs.vue");
-/* harmony import */ var _pages_ContactUs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/ContactUs */ "./resources/js/pages/ContactUs.vue");
-/* harmony import */ var _pages_Blog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/Blog */ "./resources/js/pages/Blog.vue");
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
+/* harmony import */ var _views_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/App */ "./resources/js/views/App.vue");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
-
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-
-
-
-
-var routes = [{
-  path: '/',
-  name: 'home',
-  component: _pages_Home__WEBPACK_IMPORTED_MODULE_3__["default"]
-}, {
-  path: '/chi-siamo',
-  name: 'about-us',
-  component: _pages_AboutUs__WEBPACK_IMPORTED_MODULE_4__["default"]
-}, {
-  path: '/contatti',
-  name: 'contact-us',
-  component: _pages_ContactUs__WEBPACK_IMPORTED_MODULE_5__["default"]
-}, {
-  path: '/blog',
-  name: 'posts.index',
-  component: _pages_Blog__WEBPACK_IMPORTED_MODULE_6__["default"]
-}];
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  mode: 'history',
-  routes: routes
-});
-var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
+var app = new Vue({
   el: '#app',
   render: function render(h) {
-    return h(_views_App__WEBPACK_IMPORTED_MODULE_2__["default"]);
+    return h(_views_App__WEBPACK_IMPORTED_MODULE_1__["default"]);
   },
-  router: router
+  router: _router__WEBPACK_IMPORTED_MODULE_0__["default"]
 });
 
 /***/ }),
@@ -18438,6 +18382,69 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ref_6_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_b3c5cf30_lang_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/router/index.js":
+/*!**************************************!*\
+  !*** ./resources/js/router/index.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./routes */ "./resources/js/router/routes.js");
+
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+  mode: 'history',
+  routes: _routes__WEBPACK_IMPORTED_MODULE_2__["default"]
+});
+/* harmony default export */ __webpack_exports__["default"] = (router);
+
+/***/ }),
+
+/***/ "./resources/js/router/routes.js":
+/*!***************************************!*\
+  !*** ./resources/js/router/routes.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _pages_Home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pages/Home */ "./resources/js/pages/Home.vue");
+/* harmony import */ var _pages_AboutUs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pages/AboutUs */ "./resources/js/pages/AboutUs.vue");
+/* harmony import */ var _pages_ContactUs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../pages/ContactUs */ "./resources/js/pages/ContactUs.vue");
+/* harmony import */ var _pages_Blog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pages/Blog */ "./resources/js/pages/Blog.vue");
+
+
+
+
+var routes = [{
+  path: '/',
+  name: 'home',
+  component: _pages_Home__WEBPACK_IMPORTED_MODULE_0__["default"]
+}, {
+  path: '/chi-siamo',
+  name: 'about-us',
+  component: _pages_AboutUs__WEBPACK_IMPORTED_MODULE_1__["default"]
+}, {
+  path: '/contatti',
+  name: 'contact-us',
+  component: _pages_ContactUs__WEBPACK_IMPORTED_MODULE_2__["default"]
+}, {
+  path: '/blog',
+  name: 'posts.index',
+  component: _pages_Blog__WEBPACK_IMPORTED_MODULE_3__["default"]
+}];
+/* harmony default export */ __webpack_exports__["default"] = (routes);
 
 /***/ }),
 
