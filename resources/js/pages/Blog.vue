@@ -38,6 +38,9 @@ export default {
         return {
             title: 'Blog',
             posts: [],
+            currentPage: 1,
+            lastPage: 0,
+            total: 0,
         }
     },
     methods: {

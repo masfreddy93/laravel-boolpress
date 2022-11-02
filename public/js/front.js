@@ -1991,7 +1991,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       title: 'Blog',
-      posts: []
+      posts: [],
+      currentPage: 1,
+      lastPage: 0,
+      total: 0
     };
   },
   methods: {
