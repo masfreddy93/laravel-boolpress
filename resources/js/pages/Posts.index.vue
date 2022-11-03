@@ -2,7 +2,10 @@
     <div class="container">
         <h1 class="h1 mb-5">{{ title }}</h1>
         <ul class="grid grid-cols-4 gap-4 mb-5">
-            <PostCard v-for="post in posts" :key="post.id" :post="post" />
+            <router-link :to="{ name: 'posts.show', params: { slug: post.slug } }" v-for="post in posts" :key="post.id" class="hover:no-underline hover:text-current hover:bg-amber-300">
+                <PostCard :post="post" />
+            </router-link>
+            <!-- <PostCard v-for="post in posts" :key="post.id" :post="post" /> -->
         </ul>
         <ul class="flex justify-center gap-2">
 
@@ -51,7 +54,7 @@ export default {
                 }
             })
                 .then((res) => {
-                    console.log(res.data);
+                    // console.log(res.data);
                     // const { posts } = res.data;
                     // this.posts = posts;
                     const { data, current_page, last_page, total } = res.data.result;

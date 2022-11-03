@@ -1,8 +1,9 @@
 import Home from '../pages/Home';
 import AboutUs from '../pages/AboutUs';
 import ContactUs from '../pages/ContactUs';
-import Blog from '../pages/Blog';
-
+import PostsIndex from '../pages/Posts.index';
+import PostsShow from '../pages/Posts.show.vue';
+import Page404 from '../pages/404.vue';
 
 const routes = [
     {
@@ -23,7 +24,19 @@ const routes = [
     {
         path: '/blog',
         name: 'posts.index',
-        component: Blog,
+        component: PostsIndex,
+    },
+    {
+        path: '/blog/:slug',
+        name: 'posts.show',
+        component: PostsShow,
+        props: true,
+    },
+    {
+        path: '/*',
+        name: '404',
+        component: Page404,
+        props: true,
     },
 ];
 
