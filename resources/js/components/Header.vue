@@ -4,6 +4,7 @@
             <ul class="flex gap-3 justify-center align-center">
                 <li class="hover:bg-amber-300 cursor-pointer" v-for="(link,i) in navLinks" :key="i">
                     <router-link :to="{name: link.name}" class="hover:no-underline hover:text-current">{{ link.text }}</router-link>
+                    <!-- <router-link :to="link.path" class="hover:no-underline hover:text-current">{{ link.text }}</router-link> -->
                 </li>
             </ul>
         </header>
@@ -11,6 +12,7 @@
 </template>
 
 <script>
+
 export default {
     data() {
         return {

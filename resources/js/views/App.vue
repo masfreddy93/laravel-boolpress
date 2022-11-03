@@ -14,12 +14,11 @@ export default {
         Header,
     },
 
-    data() {
-        return {
-            title: 'Post Cards',
-            // posts: [],
-        }
-    },
+    // data() {
+    //     return {
+    //         title: 'Post Cards',
+    //     }
+    // },
 }
 
 </script>

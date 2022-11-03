@@ -2080,13 +2080,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Header: _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  data: function data() {
-    return {
-      title: 'Post Cards'
-      // posts: [],
-    };
   }
+
+  // data() {
+  //     return {
+  //         title: 'Post Cards',
+  //     }
+  // },
 });
 
 /***/ }),
@@ -2149,15 +2149,7 @@ var render = function render() {
     staticClass: "border-2 border-black rounded-lg p-2 aspect-square"
   }, [_c("h4", {
     staticClass: "h4 capitalize mb-3"
-  }, [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _c("figure", {
-    staticClass: "text-center"
-  }, [_vm.post.cover ? _c("img", {
-    staticClass: "max-h-60 inline mb-2",
-    attrs: {
-      src: "/storage/".concat(_vm.post.cover),
-      alt: ""
-    }
-  }) : _vm._e()]), _vm._v(" "), _vm.post.category ? _c("p", {
+  }, [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _vm.post.category ? _c("p", {
     staticClass: "bg-amber-400 mb-2"
   }, [_vm._v(_vm._s(_vm.post.category.name))]) : _vm._e(), _vm._v(" "), _c("ul", {
     staticClass: "flex flex-auto gap-2 mb-3"
@@ -18403,8 +18395,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./routes */ "./resources/js/router/routes.js");
 
 
-
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: _routes__WEBPACK_IMPORTED_MODULE_2__["default"]
