@@ -44,9 +44,21 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $post = Post::where('slug', $slug)->with('category', 'tags')->first();
+        
+        if($post){
+            return response()->json([
+                'post' => $post,
+                'success' => true,
+            ]); 
+        } else {
+            return response()->json([
+                'success' => false
+            ], 404);
+        }
+
     }
 
     /**

@@ -1,5 +1,5 @@
 <template lang="">
-    <div class="sticky mb-1 fixed top-0 left-0 right-0">
+    <div class="sticky fixed top-0 left-0 right-0">
         <header class="p-2 bg-orange-300">
             <ul class="flex gap-3 justify-center align-center">
                 <li class="hover:bg-amber-300 cursor-pointer" v-for="(link,i) in navLinks" :key="i">
