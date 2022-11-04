@@ -176,7 +176,11 @@ class PostController extends Controller
 
         Storage::delete($post_cover);
 
-        return redirect()->route('admin.posts.index');
+        // return redirect()->route('admin.posts.index');
+
+        return response()->json([
+            'success' => true,
+        ]);
     }
 }
 

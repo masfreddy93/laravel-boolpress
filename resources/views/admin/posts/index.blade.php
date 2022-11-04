@@ -44,12 +44,13 @@
                         <td><a href="{{ route('admin.posts.show', $p) }}">Show</a></td>
                         <td><a href="{{ route('admin.posts.edit', $p) }}">Edit</a></td>
                         <td>
-                            <form action="{{ route('admin.posts.destroy', $p) }}" method="POST">
+                            {{-- <form action="{{ route('admin.posts.destroy', $p) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
 
                                 <input type="submit" value="Delete">
-                            </form>
+                            </form> --}}
+                            <delete-post-btn id ={{ $p->id }} title= {{ $p->title }}></delete-post-btn>
                         </td>
                     </tr>
                 @endforeach
