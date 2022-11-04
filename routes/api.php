@@ -19,3 +19,5 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::resource('posts', 'Api\PostController')->only(['index', 'show'])->parameters(['posts' => 'slug']);
+
+Route::post('/leads', 'Api\LeadController@store');
