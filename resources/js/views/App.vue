@@ -1,24 +1,18 @@
 <template>
-    <div>
-        <Header />
+    <Layout>
         <router-view></router-view>
-    </div>
+    </Layout>
 </template>
 
 
 <script>
-import Header from '../components/Header.vue';
+import Layout from '../layouts/Default.vue';
 
 export default {
-    components: {
-        Header,
-    },
 
-    // data() {
-    //     return {
-    //         title: 'Post Cards',
-    //     }
-    // },
+    components: {
+        Layout,
+    },
 }
 
 </script>
